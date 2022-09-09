@@ -10,10 +10,10 @@
         :default-active='activeIndex'
         unique-opened>
         <img class="el-icon-edit" src="https://ts1.cn.mm.bing.net/th/id/R-C.53d3c079f47aca3e4048c389a4a03214?rik=4jp%2bGhuchFNHLg&riu=http%3a%2f%2fwww.logomister.cn%2fupfiles%2fimage%2fimage%2f20201125%2f20201125173620_75201.jpg&ehk=SgrdibrjaGD1Y%2bAHeVUx3lsAVGs6MY2hIsH9AC0d4wU%3d&risl=&pid=ImgRaw&r=0" alt="">
-        <el-menu-item class="index" index="1" route="/sy">首页</el-menu-item>
+        <el-menu-item class="index" index="1" route="/">首页</el-menu-item>
         <el-submenu index="2">
             <template slot="title">产品展示</template>
-            <el-menu-item index="21" route="/cpzs">选项1</el-menu-item>
+            <el-menu-item index="2-1" route="/cpzs">选项1</el-menu-item>
             <el-menu-item index="2-2" route="/cpzs">选项2</el-menu-item>
             <el-menu-item index="2-3" route="/cpzs">选项3</el-menu-item>
         </el-submenu>
@@ -54,6 +54,7 @@ export default {
         this.activeIndex = key
       }
     },
+    // 修改单组件页面背景颜色
     beforeCreate () {
         document.querySelector('body').setAttribute('style', 'background-Color:#f8f8f8')
     },

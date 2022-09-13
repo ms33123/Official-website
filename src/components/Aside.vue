@@ -15,25 +15,29 @@
         <span slot="title">首页</span>
       </el-menu-item>
 
-      <el-menu-item index="/home/shop" >
-        <i class="el-icon-shopping-bag-1"></i>
-        <span slot="title">商品管理</span>
+      <el-menu-item index="/home/jbsz" >
+        <i class="el-icon-s-tools"></i>
+        <span slot="title">基本设置</span>
       </el-menu-item>
 
-      <el-menu-item index="/home/user">
-        <i class="el-icon-user"></i>
-        <span slot="title">用户管理</span>
+      <el-menu-item index="/home/map">
+        <i class="el-icon-location-outline"></i>  
+        <span slot="title">地图设置</span>
       </el-menu-item>
 
       <el-submenu index="4">
         <template slot="title">
           <i class="el-icon-setting"></i>
-          <span>其他</span>
+          <span>其他设置</span>
         </template>
         <el-menu-item-group>
-          <el-menu-item index="4-1">
+          <el-menu-item index="/home/about">
             <i class="el-icon-setting"></i>
-            <span>其他</span>
+            <span>关于我们</span>
+          </el-menu-item>
+          <el-menu-item index="/home/cplb">
+            <i class="el-icon-s-order"></i>
+            <span>产品列表</span>
           </el-menu-item>
         </el-menu-item-group>
       </el-submenu>

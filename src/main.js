@@ -12,7 +12,7 @@ import App from './App.vue'
 Vue.mixin(Mixin)
 Vue.use(ElementUI)
 Vue.use(VueRouter)
-Vue.use(VueAMap);
+Vue.use(VueAMap)
 Vue.config.productionTip = false
 
 VueAMap.initAMapApiLoader({

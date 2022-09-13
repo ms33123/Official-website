@@ -2,9 +2,13 @@ import VueRouter from 'vue-router'
 
 import index from '../pages/Index'
 import Home from '../pages/Home'
-import Shop from '../pages/Shop'
-import User from '../pages/User'
 import Admin from '../components/Admin'
+import Jbsz from '../pages/admin/jbsz'
+import Map from '../pages/admin/map'
+import About from '../pages/admin/about'
+import ProductList from '../pages/admin/ProductList'
+
+
 import Index from '../components/Index'
 import sy from '../pages/Sy'
 import gywm from '../pages/gywm/gywm'
@@ -72,11 +76,17 @@ export default new VueRouter({
             path: '',
             component: Home
         }, {
-            path: 'shop',
-            component: Shop
+            path: 'jbsz',
+            component: Jbsz
         }, {
-            path: 'user',
-            component: User
+            path: 'map',
+            component: Map
+        }, {
+            path: 'about',
+            component: About,
+        }, {
+            path: 'cplb',
+            component: ProductList
         }]
     }, ]
 })

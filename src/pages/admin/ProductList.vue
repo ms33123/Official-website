@@ -3,6 +3,7 @@
     <el-card class="box-card">
     <div slot="header" class="clearfix">
         <span>产品列表</span>
+        <el-button type="primary" size="mini" id="add" @click="add = true">添加</el-button>
     </div>
     <div>
         <el-table
@@ -27,24 +28,39 @@
         label="操作"
         width="100">
         <template slot-scope="scope">
-            <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
-            <el-button type="text" size="small" @click="dialogVisible = true">编辑</el-button>
+            <el-button @click="handleClick(scope.row)" type="text" size="small">删除</el-button>
+            <el-button type="text" size="small" @click="update = true">编辑</el-button>
         </template>
         </el-table-column>
         </el-table>
 
-        <!-- 弹窗 -->
+        <!-- 编辑弹窗 -->
         <el-dialog
-        title="提示"
-        :visible.sync="dialogVisible"
+        title="编辑"
+        :visible.sync="update"
         width="50%"
         :before-close="handleClose">
         <span>
             <revise/>
         </span>
         <span slot="footer" class="dialog-footer">
-            <el-button @click="dialogVisible = false">取 消</el-button>
-            <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+            <el-button @click="update = false">取 消</el-button>
+            <el-button type="primary" @click="update = false">确 定</el-button>
+        </span>
+        </el-dialog>
+
+        <!-- 添加弹窗 -->
+        <el-dialog
+        title="添加"
+        :visible.sync="add"
+        width="50%"
+        :before-close="handleClose">
+        <span>
+            <revise/>
+        </span>
+        <span slot="footer" class="dialog-footer">
+            <el-button @click="add = false">取 消</el-button>
+            <el-button type="primary" @click="add = false">确 定</el-button>
         </span>
         </el-dialog>
 
@@ -62,7 +78,8 @@ export default {
     },
     data() {
         return {
-          dialogVisible: false,
+          update: false,
+          add:false,
           tableData: [{
             time: '2016-05-02',
             name: '王小虎',
@@ -95,5 +112,7 @@ export default {
 </script>
 
 <style scoped>
-
+#add{
+  float: right;
+}
 </style>

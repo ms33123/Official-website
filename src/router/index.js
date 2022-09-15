@@ -7,6 +7,7 @@ import Jbsz from '../pages/admin/jbsz'
 import Map from '../pages/admin/map'
 import About from '../pages/admin/about'
 import ProductList from '../pages/admin/ProductList'
+import Carousel from '../pages/admin/Carousel.vue'
 
 
 import Index from '../components/Index'
@@ -87,6 +88,9 @@ export default new VueRouter({
         }, {
             path: 'cplb',
             component: ProductList
+        }, {
+            path: 'carousel',
+            component: Carousel
         }]
     }, ]
 })

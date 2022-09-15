@@ -39,6 +39,10 @@
             <i class="el-icon-s-order"></i>
             <span>产品列表</span>
           </el-menu-item>
+          <el-menu-item index="/home/carousel">
+            <i class="el-icon-s-tools"></i>
+            <span>首页轮播</span>
+          </el-menu-item>
         </el-menu-item-group>
       </el-submenu>
     </el-menu>

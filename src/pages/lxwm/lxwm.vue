@@ -15,13 +15,13 @@
               <img src="@/assets/images/lxwm.jpg" alt="">
             </div>
             <div class="contentBox">
-              <p>公司名称</p>
-              <p>地址：广州市番禺区58号58栋58房</p>
-              <p>电话：0000-666888 13366889988</p>
-              <p>Q  Q：326263  321654  789562</p>
-              <p>邮编：570000</p>
-              <p>邮箱：admin@dede58.com</p>
-              <p>网址：www.baidu.com</p>
+              <p>{{$store.state.information.name}}</p>
+              <p>地址：{{$store.state.information.address}}</p>
+              <p>电话：{{$store.state.information.phone}}</p>
+              <p>Q  Q：{{$store.state.information.qq}}</p>
+              <p>邮编：{{$store.state.information.Zip}}</p>
+              <p>邮箱：{{$store.state.information.email}}</p>
+              <p>网址：{{$store.state.information.website}}</p>
             </div>
           </div>
         </div>

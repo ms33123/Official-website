@@ -7,6 +7,16 @@
 <script>
 export default {
   name:'App',
+  methods:{
+
+  },
+  beforeCreate(){
+    this.$store.dispatch('information');
+    this.$store.dispatch('map')
+  },
+  mounted(){
+
+  }
 }
 </script>
 

@@ -56,7 +56,7 @@ export default {
     },
     // 修改单组件页面背景颜色
     beforeCreate () {
-        document.querySelector('body').setAttribute('style', 'background-Color:#f8f8f8')
+        document.querySelector('body').setAttribute('style', 'background-Color:#f8f8f8');
     },
     beforeDestroy () {
         document.querySelector('body').removeAttribute('style')

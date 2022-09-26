@@ -6,11 +6,11 @@
                 <div class="content">
                     <span class="lxwm">联系方式</span>
                     <p class="smallTitle">CONTACT US</p>
-                    <p class="webName">网站名称</p>
+                    <p class="webName">{{$store.state.information.name}}</p>
                     <div class="web">
-                        <p class="address">地址</p>
-                        <p class="zipCode">邮政编码</p>
-                        <p class="phone">电话</p>
+                        <p class="address">地址:{{$store.state.information.address}}</p>
+                        <p class="zipCode">邮政编码:{{$store.state.information.Zip}}</p>
+                        <p class="phone">电话:{{$store.state.information.phone}}</p>
                     </div>
                 </div>
                 <div id="container">
@@ -35,14 +35,23 @@ export default {
     name:'foot',
     data() {
         return {
-            center:[115.309519,33.067282],
-            label: { content: '众鑫管汇', offset: [-20, -30] }
+            label: { content: '', offset: [-20, -30] }
         }
+    },
+    computed:{
+      center(){
+        const jwd = window.localStorage.getItem('map');
+        return JSON.parse(jwd).jwd
+      },
+      
     },
     methods:{
         fn(){
-            window.location.href = "http://m.amap.com/navi/?dest=115.309519,33.067282&destName=众鑫管汇&hideRouteIcon=&key=8b96a2355749277530401ac50276e5bb"
+            window.location.href = 'http://m.amap.com/navi/?dest='+this.$store.state.map.jwd+'&destName='+this.$store.state.map.name+'&hideRouteIcon=&key='+this.$store.state.map.key
         }
+    },
+    created(){
+      
     }
 }
 

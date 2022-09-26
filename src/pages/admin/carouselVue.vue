@@ -19,28 +19,31 @@
     <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
     </el-upload>
     <el-form-item label="图片地址">
-        <el-input v-model="formLabelAlign.url" placeholder="上传文件图片自动填写"></el-input>
+        <el-input v-model="formLabelAlign.imgurl" placeholder="上传文件图片自动填写" disabled></el-input>
     </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+import { Message } from 'element-ui';
 export default {
     name:'carouselVue',
+    props:['index'],
     data() {
       return {
         fileList:[],
         labelPosition: 'right',
         formLabelAlign: {
           name: '',
-          url:''
+          imgurl:''
         }
       };
     },
     methods:{
         success(res){
-            this.formLabelAlign.url = res.data.url
+            this.formLabelAlign.imgurl = res.data.url
         },
         handleRemove(file, fileList) {
         console.log(file, fileList);
@@ -54,6 +57,40 @@ export default {
       beforeRemove(file, fileList) {
         return this.$confirm(`确定移除 ${ file.name }？`);
       }
+    },
+    close(){
+      this.$destroy()
+    },
+    computed:{
+      Index:function(){
+        if(this.index==''){
+          return
+        }else{
+          return this.index
+        }
+      }
+    },
+    watch: {
+      Index:{
+        handler(newValue,oldValue){
+          if(this.index){
+            axios.post('/admin/getcarousel/'+newValue).then((res)=>{
+              if(res.data.status!=0){
+                this.formLabelAlign = res.data.data[0]
+              }else{
+                Message({
+                  message:'获取失败',
+                  type:'error'
+                })
+              }
+            })
+          }
+        },
+        immediate:true
+      }
+    },
+    mounted(){
+      
     }
 }
 </script>

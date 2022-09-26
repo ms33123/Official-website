@@ -85,23 +85,21 @@ data() {
       // 登录
         submitForm(ruleForm){
             let SignData ={
-              deviceId:165156,
-              deviceName:1564,
-              pwd:ruleForm.password,
+              password:ruleForm.password,
               username:ruleForm.username
             }
-            if(ruleForm.username == ''){
+            if(ruleForm.username == '' || ruleForm.password == ''){
                 alert('用户名或密码不能为空');
             }else{
-                axios.post(this.api+'/ms3312/user/username/login',qs.stringify(SignData)).then((res,err)=>{
+                axios.post('/api/login',qs.stringify(SignData)).then((res,err)=>{
                   if(!err){
-                    if(res.data.code == 0){
+                    if(res.data.status != 0){
                       let id = nanoid()
-                      window.sessionStorage.setItem('token',res.data.data.token)
+                      window.sessionStorage.setItem('token',res.data.token)
                       window.sessionStorage.setItem('nanoid',id)
                       window.localStorage.setItem('nanoid',id)
                       // 将token存在vuex里
-                      this.$store.state.token = res.data.data.token
+                      this.$store.state.token = res.data.token
                       this.$router.push({path:"/home"})
                     }else{
                       alert(res.data.msg)
@@ -117,13 +115,12 @@ data() {
           }else{{
             let RegistrationData = {
               username:ruleForm.username,
-              pwd:ruleForm.password
+              password:ruleForm.password,
+              nick:1
             }
-            axios.post(this.api+'/ms3312/user/username/register',qs.stringify(RegistrationData)).then((res,err)=>{
+            axios.post('/api/enroll',qs.stringify(RegistrationData)).then((res,err)=>{
               if(!err){
-                if(res.data.code == 10000){
-                  alert('用户已存在')
-                }else if(res.data.code == 0){
+                if(res.data.status != 0){
                   alert('注册成功')
                 }else{
                   alert(res.data.msg)

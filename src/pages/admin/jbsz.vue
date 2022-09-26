@@ -27,7 +27,7 @@
                 <el-input v-model="formLabelAlign.webaddress"></el-input>
                 </el-form-item>
                 <el-form-item label="QQ">
-                <el-input v-model="formLabelAlign.QQ"></el-input>
+                <el-input v-model="formLabelAlign.qq"></el-input>
                 </el-form-item>
                 <el-form-item>
                     <el-button size="medium" type="primary" @click="onSubmit">立即创建</el-button>
@@ -39,6 +39,8 @@
 </template>
 
 <script>
+import qs from 'qs'
+import axios from 'axios';
 export default {
     name:'jbsz',
     data() {
@@ -52,13 +54,28 @@ export default {
           Zip:'',
           email:'',
           webaddress:'',
-          QQ:''
+          qq:''
         }
       }
     },
+    created(){
+        axios.get('/api/information').then((res,err)=>{
+            if(!err){
+                this.formLabelAlign = res.data.data[0]
+            }
+        })
+    },
     methods:{
         onSubmit(){
-            console.log(this.labelPosition);
+            axios.post('/admin/update',qs.stringify(this.formLabelAlign)).then((res,err)=>{
+                if(!err){
+                    if(res.data.status != 0){
+                        alert('修改成功')
+                    }else{
+                        alert(res.data.msg)
+                    }
+                }
+            })
         }
     }
 }
